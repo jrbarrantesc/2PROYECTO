@@ -11,8 +11,6 @@
 </head>
 
 <body>
-	<script type="text/javascript">
-window.onload=function(){alert('Bienvenido a esta pagina');}
 	<div>
 		<img src ="C:\Users\Alexander\Documents\Web\ProyectoWeb\WebMailProyect\img\tumail.png"/>
 
@@ -27,32 +25,73 @@ window.onload=function(){alert('Bienvenido a esta pagina');}
 </div>
 
 <br>
-	<div class = "container">
-		<div class = " btn btn-group-vertical col-md-2"> 
-			<div class="btn-group ">
-				<button class = "btn btn-lg btn-danger">Redactar </button> 
-			</div>
-			<div class="btn-group"><button class = "btn btn-lg btn-default">  Enviados <span class= "badge"> 5</span></button>
-			</div>
-			<div class="btn-group"><button class = "btn btn-lg btn-default">  Salida <span class= "badge"> 5</span></button>
+	 <div class="btn btn-group-vertical">
+      <div class="btn-group ">
+       <button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#myModal">Redactar</button>
+       <div class="row">
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <div class="form-group">
+                  <label  for="usr">Destinatario : <br></label>
+                  <input type="text" class="form-control" id="usr" placeholder ="oooooooooooo">
+                </div>
+                <div class="form-group">
+                  <label for="pwd">Asunto:</label>
+                  <input type="text" class="form-control" id="pwd">
+                </div>      <div class="form-group">
+                <label for="comment">Mensaje:</label>
+                <textarea class="form-control" rows="5" id="comment"></textarea>
+              </div>
+            </div>
 
-			</div>
-		</div>
-		<div class="container">
-			<div class ="table-responsive">
-				<table class = "table table-bordered table-hover table-condensed">
-					<tr class = "active" >
-						<th class="col-md-2">Estado</th>
-						<th class="col-md-2">Contenido</th>   
-						<th class="col-md-2">Aunto</th>
-						<th class="col-md-2">Fecha</th>
-						
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary">Enviar</button>
+            </div>
 
-					</tr>
-					<tr>
-				
-					</table>
-				</div>
-			</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="btn-group"><button class = "btn btn-lg btn-default">  Enviados <span class= "badge"> 5</span></button>
+  </div>
+  <div class="btn-group"><button class = "btn btn-lg btn-default">  Salida <span class= "badge"> 5</span></button>
+  </div>
+</div>
+		<br>
+		<div class ="container col-lg-10">          
+     <table class = "table table-bordered  table-hover table-condensed col-lg-12">
+      <thead>
+        <tr class ="active">
+          <th>Usuario</th>
+          <th >Correo</th>
+          <th >Fecha</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input type="checkbox" class="mail-checkbox">Usuario</td>
+          <td><a href="http://www.w3schools.com/html/">Texto</td>
+          <td>19 nov.</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="mail-checkbox">Usuario</td>
+          <td>Texto</td>
+          <td>19 nov.</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="mail-checkbox">Usuario</td>
+          <td>Texto</td>
+          <td>18 nov.</td>
+        </tr>
+      </tbody>
+    </table>
+</div>
 		</body>
 		</html>	

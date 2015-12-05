@@ -15,9 +15,8 @@ if(!users){
 
 		function crearCorreo(){
 
-
-			var destinatario = document.getElementById("destino").value;
-			var asunto = document.getElementById("asunto").value;	
+			var asunto = document.getElementById("asunto").value;
+			var p = document.getElementById("pedro").value;	
 			var contenido = document.getElementById("contenido").value;
 			var contador = Number(localStorage.getItem('cont'));
 	contador ++;//se incrementa el contador en la variable local
@@ -26,7 +25,7 @@ if(!users){
 		var correo = {   //se crea un objeto user con dos variables
 			"bandeja":"salida",
 			"id":contador,
-			"destinatario": destino ,
+			"destinatario": p ,
 			"asunto": asunto,
 			"contenido":contenido
 		};
@@ -34,7 +33,7 @@ if(!users){
          	localStorage.setItem('correosalida',JSON.stringify(correosalida));//aqui antes de la  acoma a quien y despues que le va a sobreescribir 
 
 
-         	window.location.href="Principal.html";
+         	window.location.href="bandeja.html";
          }
          function register(){
          	var newuser = prompt("Nombre de Usuario?");
@@ -60,7 +59,7 @@ function isUser(){
 		var clave = usersList[i].password;
 		if(name===user&&clave===userpassword){
 
-			window.location.href="Principal.html";
+			window.location.href="bandeja.html";
 	}
 	
 
@@ -74,6 +73,23 @@ function isUser(){
 		document.getElementById("username").value=""; //se limpian los campos de texto y se envia el mensaje de rechazo
 		document.getElementById("userpassword").value="";
 }
+function cargarCorreo()
+{
+	var correos = localStorage.getItem('correosalida');
+var data = JSON.parse(correos); //Parse the Data back into the object
+	var correo_html = "";
+	for (var i = 0; i < data.length; i++) {
+		// add users to the table
+	
+		var c = data[i];
+		correo_html =correo_html+"<tr><td>"+c.destinatario+"</td><td>"+c.asunto+"</td><td>"+c.contenido+"</td></tr>";
+	}
+	console.log(correo_html);
 
+	$('#correo_table').html(correo_html);
 
+}
 
+window.onload = function () {
+		cargarCorreo();
+}

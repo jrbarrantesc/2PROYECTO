@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" lang="es-es">
+<title>Web Storage 3</title>
+
+<script>
+function findAllItems() {
+  var itemList = document.getElementById("itemList");
+  itemList.innerHTML = "";
+
+  for (var i=0; i<localStorage.length; i++) {
+    var key = localStorage.key(i);
+    var item = localStorage[key];
+
+    var newItem = document.createElement("li");
+    newItem.innerHTML = key + ": " + item;
+    itemList.appendChild(newItem);
+  }
+}
+</script>
+</head>
+<body>
+<button onclick="findAllItems()">'Local Storage'</button>
+<ul id="itemList">
+</ul>
+</body>
+</html>

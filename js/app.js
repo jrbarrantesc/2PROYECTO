@@ -59,16 +59,21 @@ function isUser(){
 		var name = usersList[i].username;
 		var clave = usersList[i].password;
 		if(name===user&&clave===userpassword){
-			valid=true;
-		}
 
-		if(!valid){
+			window.location.href="Principal.html";
+	}
+	
+
+	}
+
+	if(!valid){
+
+		//window.alert("Usuario Invalido");
+	}
 
 		document.getElementById("username").value=""; //se limpian los campos de texto y se envia el mensaje de rechazo
 		document.getElementById("userpassword").value="";
-		window.alert("Usuario Invalido");
-	}
-	else{     //si la respuesta es positiva solo se redirecciona.
-		window.location.href="Principal.html";
-			}
-}}
+}
+
+
+

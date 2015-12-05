@@ -35,17 +35,19 @@ if(!users){
 
          	window.location.href="bandeja.html";
          }
-         function register(){
-         	var newuser = prompt("Nombre de Usuario?");
-         	var newpassword = prompt("Nueva Contraseña?");
+       function register(){ 
 
-	var user={   //se crea un objeto user con dos variables
+                var newuser = document.getElementById("username").value;	
+				var newpassword = document.getElementById("userpassword").value;  	
+
+         	var user = {   //se crea un objeto user con dos variables
 		"username":newuser,
-		"password":newpassword
-	};  
+		"userpassword":newpassword
+		};  
 	users.push(user);   //se almacena en un array "users" que se crea al cargar el documento js (primeras tres lineas).
 
 	localStorage.setItem('users',JSON.stringify(users)); //se rescribe el objeto "users" guardado en localStorage usando setItem. El stringify convierte todo el array a string ya que local storage solo guarda strings.
+window.location.href="index.html";
 }
 
 function isUser(){
@@ -57,13 +59,13 @@ function isUser(){
 	for(var i=0; i<usersList.length; i++){ //se obtienen los datos de cada usuario y se comparan con los datos ingresados para ver si coinciden.
 		var name = usersList[i].username;
 		var clave = usersList[i].password;
-		if(name===user&&clave===userpassword){
+		//if(name===user&&clave===userpassword){
 
 			window.location.href="bandeja.html";
 	}
 	
 
-	}
+	//}
 
 	if(!valid){
 
@@ -72,6 +74,20 @@ function isUser(){
 
 		document.getElementById("username").value=""; //se limpian los campos de texto y se envia el mensaje de rechazo
 		document.getElementById("userpassword").value="";
+}
+function ValidateEmail(inputText)
+{
+    var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+   
+   
+    if(inputText.value.match(mailformat))
+    {
+        window.location.href='bandeja.html';
+    }
+    else
+    {
+        alert("Esto no es un correo");
+    }
 }
 function cargarCorreo()
 {
@@ -93,3 +109,6 @@ var data = JSON.parse(correos); //Parse the Data back into the object
 window.onload = function () {
 		cargarCorreo();
 }
+
+
+

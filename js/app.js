@@ -197,6 +197,10 @@ function S(){
 	window.location.href="BandejaSalida.html";
 }
 
+function SL(){
+	window.location.href="index.html";
+}
+
 //Documento Listo.
 $(document).ready(function(){
 	$("#btn").click(function(){
@@ -207,6 +211,8 @@ $(document).ready(function(){
 	});
 	$("#btn2").click(function(){
 		S();
+	});$("#btn3").click(function(){
+		SL();
 	});
 });
 function borrar(){

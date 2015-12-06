@@ -30,6 +30,16 @@ if(!users){
 
 	localStorage.setItem('cont',contador);//agarre lo del local storage y cambielo
 
+
+var correo = {   //se crea un objeto user con dos variables
+			"bandeja":"salida",
+			"id":contador,
+			"fecha":my,
+			"destinatario": p ,
+			"asunto": asunto,
+			"contenido":contenido	
+
+		};
 if ((asunto==null||asunto=="") ||(p==null||pedro=="")||(contenido==null||contenido=="")) 
          	{
          		alert("Datos vacios");
@@ -41,20 +51,28 @@ if ((asunto==null||asunto=="") ||(p==null||pedro=="")||(contenido==null||conteni
          		}
          		else{
 
+if (estaeditando == true) {
+var retrievedObject = localStorage.getItem("correosalida");
+var data = JSON.parse(retrievedObject);
+data.splice(guardarID,1);
+data.push(correo);
+localStorage.setItem("correosalida",JSON.stringify(data));
+estaeditando = false;
+window.location.reload();
 
-		var correo = {   //se crea un objeto user con dos variables
-			"bandeja":"salida",
-			"id":contador,
-			"fecha":my,
-			"destinatario": p ,
-			"asunto": asunto,
-			"contenido":contenido	
 
-		};
+}
+else{
+
+
          	correosalida.push(correo);//se almacena en un array "correos" 
          	localStorage.setItem('correosalida',JSON.stringify(correosalida));//aqui antes de la  acoma a quien y despues que le va a sobreescribir 
 
 
+
+}
+
+		
          	window.location.href="bandeja.html";
          }
      }
@@ -139,6 +157,7 @@ window.onload = function () {
 		kd= ($(this).index()+1);
 		var dd=(kd-1);
 		guardarID = dd;
+		estaeditando=true;
 		var retrievedObject = localStorage.getItem('correosalida');
 	 var datePerson = JSON.parse(retrievedObject); //Parse the Data back into the object
 	 $('#myModal').modal('show');

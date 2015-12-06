@@ -1,3 +1,6 @@
+var guardarID;//currectID
+var estaeditando = false;//isEditing
+
 var users= JSON.parse(localStorage.getItem('users'));
 if(!users){
 	users=[];}
@@ -135,6 +138,7 @@ window.onload = function () {
 	$('#tablacargar').find('tr').click( function(){
 		kd= ($(this).index()+1);
 		var dd=(kd-1);
+		guardarID = dd;
 		var retrievedObject = localStorage.getItem('correosalida');
 	 var datePerson = JSON.parse(retrievedObject); //Parse the Data back into the object
 	 $('#myModal').modal('show');
@@ -161,3 +165,36 @@ function validateEmail(pedro){
 	}
 }
 
+// enlaces entre Ventanas.
+function L(){
+	window.location.href="index.html";
+
+}
+function E(){
+	window.location.href="bandeja.html";
+}
+
+function S(){
+	window.location.href="BandejaSalida.html";
+}
+
+//Documento Listo.
+$(document).ready(function(){
+	$("#btn").click(function(){
+		L();
+	});
+	$("#btn1").click(function(){
+		E();
+	});
+	$("#btn2").click(function(){
+		S();
+	});
+});
+function borrar(){
+var retrievedObject = localStorage.getItem("correosalida");
+var data = JSON.parse(retrievedObject);
+data.splice(guardarID,1);
+localStorage.setItem("correosalida",JSON.stringify(data));
+estaeditando = false;
+window.location.reload();
+}
